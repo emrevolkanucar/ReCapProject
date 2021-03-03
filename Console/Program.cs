@@ -79,11 +79,21 @@ namespace Console
             //carManager.Delete(car3);
 
             System.Console.WriteLine("------------ ARABA LISTESI ------------");
-            
-            foreach (CarDetailDto car in carManager.GetAllWithDetails())
+
+            var result = carManager.GetAllWithDetails();
+
+            if(result.Success)
             {
-                System.Console.WriteLine("Car Name: " + car.CarName + "\nBrand Name: " + car.BrandName +  "\nColor Name: " + car.ColorName + "\nDaily Price: " + car.DailyPrice + "\n ------ ");
+                foreach (CarDetailDto car in result.Data)
+                {
+                    System.Console.WriteLine("Car Name: " + car.CarName + "\nBrand Name: " + car.BrandName + "\nColor Name: " + car.ColorName + "\nDaily Price: " + car.DailyPrice + "\n ------ ");
+                }
+            } else
+            {
+                System.Console.WriteLine(result.Message);
             }
+
+            
 
 
         }
