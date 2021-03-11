@@ -50,7 +50,7 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.CarMaintenanceTime);
             }
 
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllWithDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllWithDetails(), Messages.CarListed);
         }
 
         public IDataResult<List<Car>> GetById(int Id)
